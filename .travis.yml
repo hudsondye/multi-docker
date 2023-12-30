@@ -14,3 +14,11 @@ after_success:
   - docker build -t hudsondye/multi-nginx ./nginx
   - docker build -t hudsondye/multi-server ./server
   - docker build -t hudsondye/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push hudsondye/multi-client
+  - docker push hudsondye/multi-nginx
+  - docker push hudsondye/multi-server
+  - docker push hudsondye/multi-worker
+  
